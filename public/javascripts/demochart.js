@@ -1,42 +1,58 @@
-//rendering a graph
 
-data_y = [12, 19, 3, 5, 2, 3]
-data_x = [0,1,2,3,4,5]
 
-var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
+for x in 
+
+const ctx = document.getElementById('myChart').getContext('2d');
+
+const data = {
+
+    // Labels should be Date objects
+    labels: [new Date(2017, 08, 16), new Date(2017, 08, 17), new Date(2017, 08, 18), new Date(2017, 08, 19), new Date(2018, 00, 01)],
+    datasets: [{
+        fill: false,
+        label: 'Stock 1',
+        data: [280, 250, 340, 300],
+        borderColor: '#fe8b36',
+        backgroundColor: '#fe8b36',
+        lineTension: 0,
+    }, 
+{
+        fill: false,
+        label: 'Stock 2',
+        data: [180, 150, 240, 200],
+        borderColor: '#00000',
+        backgroundColor: '#000000',
+        lineTension: 0,
+    }
+    ]
+}
+const options = {
     type: 'line',
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: "Stock Prediction Graph",
-            data: data_y,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
+    data: data,
     options: {
+        fill: false,
+        responsive: true,
         scales: {
+            xAxes: [{
+                type: 'time',
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: "Time",
+                }
+            }],
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
+                    beginAtZero: true,
+                },
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: "Stock Prices ($)",
                 }
             }]
         }
     }
-    });
+}    
+
+const chart = new Chart(ctx, options);
