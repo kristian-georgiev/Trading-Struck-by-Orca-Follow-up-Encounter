@@ -1,6 +1,6 @@
 
 
-for x in 
+// for x in 
 
 const ctx = document.getElementById('myChart').getContext('2d');
 
