@@ -98,7 +98,6 @@ function main(){
     }
     // rendering each stock's predicted prices on the graph
     formattedPredictedData = [];
-    console.log(stockPricesPredictedList);
     for (i = 0; i < stockPricesPredictedList.length; i ++) {
         const element = [];
         for (j = 0; j < datePredictedList.length; j ++ ){
