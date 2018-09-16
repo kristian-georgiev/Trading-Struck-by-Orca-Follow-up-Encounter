@@ -84,7 +84,7 @@ function main(){
     }
 
     // rendering each stock's prices on the graph
-    for (i = 0; i < stockPricesList.length; i ++){
+    for (i = 0; i < stockPricesList.length; i ++){ // one loop for each stock
         data.datasets.push(
             {
             fill: false,
@@ -97,12 +97,21 @@ function main(){
         )
     }
     // rendering each stock's predicted prices on the graph
-    for (i = 0; i < stockPricesPredictedList.length; i ++){
+    formattedPredictedData = [];
+    console.log(stockPricesPredictedList);
+    for (i = 0; i < stockPricesPredictedList.length; i ++) {
+        const element = [];
+        for (j = 0; j < datePredictedList.length; j ++ ){
+            element.push({x: datePredictedList[j], y: stockPricesPredictedList[i][j]})
+        }
+        formattedPredictedData.push(element);
+    }
+    for (i = 0; i < stockPricesPredictedList.length; i ++){ // one loop for each stock
         data.datasets.push(
             {
             fill: false,
-            label: stockNamesList[i],
-            data: stockPricesPredictedList[i],
+            label: stockNamesList[i] + "(Predicted)",
+            data: formattedPredictedData[i],
             borderColor: colors[i % colors.length - 1],
             backgroundColor: colors[i % colors.length - 1],
             lineTension: 0,
